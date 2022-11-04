@@ -10,10 +10,20 @@ export class ChecksumComponent implements OnInit {
   constructor() {
   }
 
-  checksum(account: string): boolean {
-    let accountNumber : number = Number.parseInt(account);
+  validateAccount(account: string): boolean {
+    let accountNumber: number = Number.parseInt(account);
 
-  return (accountNumber % 10 + accountNumber / 10 * 2) % 11 === 0
+    return this.checkSum(accountNumber) % 11 === 0;
+  }
+
+  private checkSum(accountNumber: number): number {
+    let sum = 0;
+    for (let factor = 1; factor < 10; factor++) {
+      const units =  accountNumber % 10;
+      accountNumber = Math.floor(accountNumber/10);
+      sum += units*factor;
+    }
+    return sum;
   }
 
   ngOnInit(): void {
