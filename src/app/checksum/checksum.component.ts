@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-checksum',
@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChecksumComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   checksum(account: string): boolean {
-    if (account === '000000002')
-      return false;
-    return account !== '000000001';
+    let accountNumber : number = Number.parseInt(account);
+
+  return (accountNumber % 10 + accountNumber / 10 * 2) % 11 === 0
   }
 
   ngOnInit(): void {

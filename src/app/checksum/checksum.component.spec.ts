@@ -42,5 +42,20 @@ describe('ChecksumComponent', () => {
       const response = checksumComponent.checksum('000000002');
       expect(response).toBeFalse();
     });
+
+    it(`should be true for 000000051`, () => {
+      const fixture = TestBed.createComponent(ChecksumComponent);
+      const checksumComponent = fixture.componentInstance;
+      const response = checksumComponent.checksum('000000051');
+      expect(response).toBeTrue();
+    });
+
+    it(`should be true for 000000035`, () => {
+      const fixture = TestBed.createComponent(ChecksumComponent);
+      const checksumComponent = fixture.componentInstance;
+      const response = checksumComponent.checksum('000000035');
+      expect(response).toBeTrue();
+    });
+
   })
 });
